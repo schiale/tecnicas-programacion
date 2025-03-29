@@ -6,7 +6,7 @@ let promedio = (a + b + c) / 3;
 console.log("El promedio es: ", promedio);
 
 //Calculo factorial
-
+let n = 3;
 function factorial (n) {
     let resultado  = 1;
 
@@ -16,7 +16,6 @@ function factorial (n) {
     return resultado;
 }
 
-let n = prompt("Ingrese el numero a factorizar");
 console.log("Factorial de " + n + " es " + factorial())
 
 //Variables y constantes
@@ -51,7 +50,18 @@ let datos_usuario = {
                     }
 
 //Expresiones y asignaciones
-let total = precio * cantidad + impuesto;
+let precio = 10;
+let cantidad = 2, impuestos = 25;
+
+let total = precio * cantidad + impuestos;
+
+//Entradas y salidas
+//Entrada (pidiendo datos al usuario):
+let nombre_entrada = prompt("¿Cuál es tu nombre?");
+
+//Salida (mostrando información
+alert("Hola, " + nombre_entrada);
+console.log("Bienvenido a la consola");
 
 let nombre = prompt("Como te llamas?")
 console.log("Hola " + nombre + " el total calculado es " + total)
@@ -71,7 +81,6 @@ if(edad < 18){
 }
 
 //Switch case
-
 let codigo_pais = prompt("Ingrese codigo pais");
 
 switch (codigo_pais) {
@@ -139,6 +148,36 @@ do {
 } while (accion2 != "salir");
 
 //Funciones y pasaje de parametros
+function saludar(nombre) {
+    console.log("Hola, " + nombre);
+}
+saludar("Lucía");
+
+function cuadrado(x) {
+    return x * x;
+}
+let resultado = cuadrado(5); // resultado = 25
+
+function mostrarMensaje() {
+    console.log("Bienvenido al sistema");
+}
+mostrarMensaje();
+  
+const sumar = (a, b) => a + b;
+console.log(sumar(3, 7)); // 10
+
+function convertirAMetros(kilometros) {
+    return kilometros * 1000;
+}
+
+function mostrarDistancia(km) {
+    let metros = convertirAMetros(km);
+    console.log(km + " km equivalen a " + metros + " metros");
+}
+  
+mostrarDistancia(5); // 5 km equivalen a 5000 metros
+  
+  
 //Ejemplo sin funciones ---------------------------------------------------------
 var users = []
 
@@ -178,11 +217,9 @@ console.log("Usuarios", users)
 const get_expire_date = () => {
     return Date.now() + 30;
 }
-
 function build_full_name(name, lastname) {
     return name + full_name;
 }
-
 function user_register(){
     //Toma de valores
     let user_name = prompt("Ingrese nombre de usuario")
@@ -192,7 +229,6 @@ function user_register(){
 
     //Armado de nombre compelto
     let user_full_name = build_full_name(user_name, user_lastname);
-
     //Calculo de dias de vigencia
     let expires = get_expire_date();
 
@@ -207,9 +243,7 @@ function user_register(){
 }
 
 let users1 = [];
-
 let users_count1 = 4;
-
 while (users_count1 > 0) {
     users1.push(user_register())
 
@@ -217,5 +251,39 @@ while (users_count1 > 0) {
         
     }, 1000);
 }
-
 console.log("Usurios", users)
+
+//Descomposición 
+
+function iniciarRegistro() {
+  let nombre = pedirNombre();
+  let edad = pedirEdad();
+
+  if (esMayorDeEdad(edad)) {
+    registrar(nombre);
+  } else {
+    rechazarRegistro();
+  }
+}
+
+function pedirNombre() {
+  return prompt("Ingrese su nombre:");
+}
+
+function pedirEdad() {
+  return parseInt(prompt("Ingrese su edad:"));
+}
+
+function esMayorDeEdad(edad) {
+  return edad >= 18;
+}
+
+function registrar(nombre) {
+  console.log("Registro exitoso. ¡Bienvenido/a " + nombre + "!");
+}
+
+function rechazarRegistro() {
+  console.log("Debés ser mayor de edad para registrarte.");
+}
+
+iniciarRegistro();
